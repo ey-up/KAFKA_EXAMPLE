@@ -1,4 +1,26 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    topics:
+      create-Logs:
+        name: logsCreate
+    consumer:
+      logs-create:
+        group-id: logsCreateConsumer
+        concurrency: 1
+        offset-reset: latest
+        auto-commit: true
+        session-timeout: 15000
+        max-poll: 200
+
 swagger:
   host:
     url: localhost:8080
     path:
+
+logging:
+  file:
+    path: x.log
+  level:
+    root: OFF
+    com.kartaca.okur.controller: INFO

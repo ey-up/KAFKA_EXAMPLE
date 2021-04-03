@@ -1,6 +1,4 @@
 package com.kartaca.okur.controller;
-
-
 import com.kartaca.okur.service.KartacaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

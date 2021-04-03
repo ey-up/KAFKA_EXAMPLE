@@ -1,8 +1,19 @@
 version: '3.1'
 services:
   couchbase:
-    image: couchbase
-    container_name: kartaca
+    image: bentonam/couchbase-docker:enterprise
+    environment:
+      CLUSTER_USERNAME: Administrator
+      CLUSTER_PASSWORD: password
+      CLUSTER_NAME: Kartaca Cluster
+      SERVICES: data,index,query
+      CLUSTER_RAMSIZE: 500
+      BUCKET: Logs
+      BUCKET_RAMSIZE: 300
+      NODE_INIT_INDEX_PATH: /opt/couchbase/var/lib/couchbase/indexes
+      RBAC_USERNAME: eyup
+      RBAC_PASSWORD: eyup123
+    container_name: couchbase
     ports:
       - "8091-8094:8091-8094"
       - "11210:11210"
