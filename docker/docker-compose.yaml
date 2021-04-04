@@ -13,19 +13,19 @@ services:
       NODE_INIT_INDEX_PATH: /opt/couchbase/var/lib/couchbase/indexes
       RBAC_USERNAME: eyup
       RBAC_PASSWORD: eyup123
-    container_name: couchbase
+    container_name: couchbase_okur
     ports:
       - "8091-8094:8091-8094"
       - "11210:11210"
   zookeeper:
     image: wurstmeister/zookeeper:3.4.6
-    container_name: zookeeper
+    container_name: zookeeper_okur
     expose:
       - "2181"
 
   kafka:
     image: wurstmeister/kafka:2.11-2.0.0
-    container_name: kafka
+    container_name: kafka_okur
     depends_on:
       - zookeeper
     ports:
@@ -34,3 +34,17 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+#  grafana:
+#   image: grafana/grafana:latest
+#   container_name: monitoring_grafana
+#   restart: unless-stopped
+#   environment:
+#     - GF_SECURITY_ADMIN_PASSWORD=MYPASSWORT
+#     - GF_USERS_ALLOW_SIGN_UP=false
+#      - GF_SERVER_DOMAIN=myrul.com
+#      - GF_SMTP_ENABLED=true
+#    - GF_SMTP_HOST=smtp.gmail.com:587
+#    - GF_SMTP_USER=myadrress@gmail.com
+#     - GF_SMTP_PASSWORD=mypassword
+#     - GF_SMTP_FROM_ADDRESS=myaddress@gmail.com
